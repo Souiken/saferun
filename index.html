@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>那些秋叶安全运行纪录</title>
+<style>
+    body {
+      margin:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:#f5f8fc;
+      font-family:"Noto Sans CJK",sans-serif;
+    }
+
+    .board {
+      background:#fff;
+      border:3px solid #1a4fa3;
+      border-radius:12px;
+      width:800px;
+      max-width:95%;
+      text-align:center;
+      box-shadow:0 4px 12px rgba(0,0,0,.2);
+    }
+
+    .top-bar,.footer-bar{
+      background:#1a4fa3;
+      color:#fff;
+    }
+
+    .top-bar{
+      font-size:22px;
+      font-weight:bold;
+      padding:10px;
+    }
+
+    .sub-title{
+      color:#1a4fa3;
+      font-size:22px;
+      font-weight:bold;
+      padding:10px;
+    }
+
+    .date-line{
+      font-size:22px;
+      color:#c00;
+      margin-bottom:20px;
+      font-weight:bold;
+    }
+
+    .date{
+      background:#111;
+      color:#f00;
+      padding:4px 8px;
+      border-radius:6px;
+      font-family:"DIN",monospace;
+      font-size:26px;
+      margin:0 2px;
+    }
+
+    .bottom-bar{
+      background-color: #f8f8ff;
+      font-size: 22px;
+      padding: 12px;
+      color: #c00;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .days{
+      font-size:46px;
+      color:#f00;
+      background:#111;
+      padding:10px 30px;
+      border-radius:10px;
+      display:inline-block;
+      font-family:"DIN",monospace;
+      margin:0 10px;
+    }
+
+    .footer-bar{
+    height:12px;
+    width:100%;
+    }
+
+</style>
+</head>
+<body>
+<div class="board">
+  <div class="top-bar">安全是救助业的生命线</div>
+  <div class="sub-title">那些秋叶安全运行纪录</div>
+  <div class="date-line">
+    自 <span class="date" id="startYear">2025</span> 年
+    <span class="date" id="startMonth">07</span> 月
+    <span class="date" id="startDay">15</span> 日 至
+    <span class="date" id="currentYear"></span> 年
+    <span class="date" id="currentMonth"></span> 月
+    <span class="date" id="currentDay"></span> 日
+  </div>
+  <div class="bottom-bar">
+    那些秋叶持续安全运行 <span class="days" id="safeDays">0000</span> 天
+  </div>
+  <div class="footer-bar"></div>
+</div>
+<script>
+    const s = new Date("2025-07-15");
+    const n = new Date();
+    const y = d => String(d).padStart(2, "0");
+
+    document.getElementById("currentYear").textContent = n.getFullYear();
+    document.getElementById("currentMonth").textContent = y(n.getMonth() + 1);
+    document.getElementById("currentDay").textContent = y(n.getDate());
+
+    const days = Math.floor((n - s) / (1000 * 60 * 60 * 24));
+    document.getElementById("safeDays").textContent = String(days).padStart(4, "0");
+</script>
+</body>
+</html>
